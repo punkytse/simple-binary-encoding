@@ -38,17 +38,17 @@ public:
     /*
      * Run 1 encoding
      */
-    void runEncode(char *buffer, const int bufferLength)
+    int runEncode(char *buffer, const int bufferLength)
     {
-        encode_buffer(buffer, bufferLength);
+        return encode_buffer(buffer, bufferLength);
     };
 
     /*
      * Run 1 decoding
      */
-    void runDecode(const char *buffer, const int bufferLength)
+    int runDecode(const char *buffer, const int bufferLength)
     {
-        decode_buffer(buffer, bufferLength);
+        return decode_buffer(buffer, bufferLength);
     };
 
     /*
@@ -56,8 +56,8 @@ public:
      */
     void runEncodeAndDecode(char *buffer, const int bufferLength)
     {
-        encode_buffer(buffer, bufferLength);
-        decode_buffer(buffer, bufferLength);
+        int len = encode_buffer(buffer, bufferLength);
+        decode_buffer(buffer, len);
     };
 
     /*

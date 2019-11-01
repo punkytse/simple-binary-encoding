@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package Fix;
+
+option java_package = "uk.co.real_logic.protobuf";
+option java_outer_classname = "Fix";
+
+message Decimal64
+{
+    int64 mantissa = 1;
+    uint32 exponent = 2;
+}
+
+message IntQty32
+{
+    int32 mantissa = 1;
+    uint32 exponent = 2;
+}
+
+message NewOrderSingle
+{
+	enum OrdType
+	{
+		NONE = 0;
+		MARKET_ORDER = 1;
+ 		LIMIT_ORDER = 2;
+		STOP_ORDER = 3;
+		STOP_LIMIT_ORDER = 4;
+	}
+	
+	enum TimeInForce
+	{
+		DAY = 0;
+ 		GOOD_TILL_CANCEL = 1;
+		FILL_AND_KILL = 3;
+		GOOD_TILL_DATE = 6;
+	}
+	
+    enum Side
+    {
+    	SIDE_NONE = 0;
+        BUY = 1;
+        SELL = 2;
+    }
+    
+    enum HandInst
+    {
+    	HANDINST_NONE = 0;
+    	AUTOMATIC = 1;
+    }
+
+	uint64 		transactTime = 1;
+	IntQty32	orderQty = 2;
+	OrdType		ordType = 3;
+	Decimal64	price = 4;
+	Side		side = 5;
+	TimeInForce	tif = 6;
+	HandInst	handInst = 7;
+	bytes symbol = 8;
+	bytes account = 9;
+	bytes clOrdID = 10;
+}

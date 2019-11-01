@@ -116,7 +116,7 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'maven'
     apply plugin: 'signing'
-    apply plugin: 'checkstyle'
+    //apply plugin: 'checkstyle'
     apply plugin: 'eclipse'
     apply plugin: 'io.freefair.javadoc-links'
 
@@ -126,7 +126,7 @@ subprojects {
     jar.enabled = true
 
     dependencies {
-        checkstyle 'com.puppycrawl.tools:checkstyle:8.25'
+        //checkstyle 'com.puppycrawl.tools:checkstyle:8.25'
 
         compile 'org.agrona:agrona:1.0.8'
 
@@ -135,7 +135,7 @@ subprojects {
         testCompile 'junit:junit:4.12'
     }
 
-    checkstyle.toolVersion = '8.25'
+    //checkstyle.toolVersion = '8.25'
 
     compileJava {
         sourceCompatibility = sbeJavaVersion
@@ -453,6 +453,10 @@ project(':sbe-benchmarks') {
         annotationProcessor 'org.openjdk.jmh:jmh-generator-annprocess:1.21'
         compile project(':sbe-tool')
         compile files('build/classes/java/generated')
+
+        // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java
+		compile group: 'com.google.protobuf', name: 'protobuf-java', version: '3.6.1'
+        
     }
 
     sourceSets {
