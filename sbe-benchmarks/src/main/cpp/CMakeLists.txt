@@ -55,7 +55,7 @@ add_executable(benchlet-sbe-neworder-runner ${SRCS_BENCHLET_MAIN} NewOrderBench.
 target_include_directories(benchlet-sbe-neworder-runner PRIVATE ${CXX_CODEC_TARGET_DIR})
 target_link_libraries(benchlet-sbe-neworder-runner sbe)
 
-find_library(PROTOBUF_LIB protobuf)
+find_library(PROTOBUF_LIB libprotobuf.a)
 target_link_libraries(benchlet-sbe-neworder-runner ${PROTOBUF_LIB})
 
 add_dependencies(benchlet-sbe-neworder-runner perf_codecs)
